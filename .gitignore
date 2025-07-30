@@ -1,0 +1,17 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+
+# Environment
+.env
+
+# Logs
+logs/
+*.log
+mlruns/
+# IDEs
+.idea/
+.vscode/
+
+# Others
+.DS_Store

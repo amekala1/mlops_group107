@@ -1,3 +1,8 @@
+from dotenv import load_dotenv
+import os
 
-kaggle_username = "anusha5932"
-kaggle_key = "ff3ba281a3a2898230bca1f9e06b6b4d"
+# Load credentials from .env file
+load_dotenv()
+
+kaggle_username = os.getenv("KAGGLE_USERNAME")
+kaggle_key = os.getenv("KAGGLE_KEY")
