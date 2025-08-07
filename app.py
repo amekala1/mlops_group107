@@ -1,3 +1,6 @@
+import mlflow
+import pandas as pd
+
 from src.logger import logger
 from src.exception import CustomException
 from src.iris_classification import data_ingestion
@@ -7,6 +10,7 @@ import pickle
 import numpy as np
 
 import sys
+model = mlflow.pyfunc.load_model("models:/iris_best_model@production")
 
 app=Flask(__name__)
 ## Load the model
@@ -16,37 +20,56 @@ app=Flask(__name__)
 def home():
     return render_template('home.html')
 
-@app.route('/predict_api',methods=['POST'])
+@app.route('/predict_api', methods=['POST'])
 def predict_api():
-    data=request.json['data']
-    print(data)
-    print(np.array(list(data.values())).reshape(1,-1))
-    #new_data=scalar.transform(np.array(list(data.values())).reshape(1,-1))
-    #output=regmodel.predict(new_data)
-    #print(output[0])
-    print("Data received for prediction:", data)
-    #return jsonify(output[0])
+    try:
+        data = request.get_json(force=True)
+        input_data = data['data']  # {"sepal_length": 5.1, "sepal_width": 3.5, ...}
+        print("Data received for prediction:", input_data)
 
-@app.route('/predict',methods=['POST'])
+        # Convert to DataFrame
+        input_df = pd.DataFrame([input_data])
+
+        # Make prediction
+        prediction = model.predict(input_df)
+
+        # Return JSON response
+        return jsonify({'prediction': prediction.tolist()[0]})
+
+    except Exception as e:
+        return jsonify({'error': str(e)})
+
+
+@app.route('/predict', methods=['POST'])
 def predict():
-    #data=[float(x) for x in request.form.values()]
-    #final_input=scalar.transform(np.array(data).reshape(1,-1))
-    print("IRIS Classification API is called")
-    #output=regmodel.predict(final_input)[0]
-    #return render_template("home.html",prediction_text="The IRIS species is {}".format(output))
+    try:
+        # Get form values and convert to float list
+        form_values = [float(x) for x in request.form.values()]
+        input_df = pd.DataFrame([form_values], columns=[
+            "sepal_length", "sepal_width", "petal_length", "petal_width"
+        ])
+
+        # Predict
+        prediction = model.predict(input_df)[0]
+
+        return render_template("home.html", prediction_text=f"The IRIS species is {prediction}")
+
+    except Exception as e:
+        return render_template("home.html", prediction_text=f"Error: {str(e)}")
+
 
 if __name__ == "__main__":
     logger.info("Execution started")
 
     try:
         logger.info("Starting data ingestion process...")
-        #data_ingestion.initiate_data_ingestion()
+        data_ingestion.initiate_data_ingestion()
         logger.info("Data ingestion completed.")
 
         logger.info("Starting model training process...")
-        #train.main()
+        train.main()
         logger.info("Model training completed.")
-        app.run(debug=True)
+        app.run(debug=True,port=8000)
 
     except Exception as e:
         logger.error("An exception occurred during pipeline execution")
