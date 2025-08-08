@@ -1,17 +1,28 @@
+# python
 import os
 import pandas as pd
-from kaggle.api.kaggle_api_extended import KaggleApi
 from src.logger import logger
 from Config import dbConfig as config
 import io
 
 def read_kaggle_dataset():
+    # Defer Kaggle import to avoid auth during module import
+    try:
+        from kaggle.api.kaggle_api_extended import KaggleApi
+    except Exception as e:
+        raise RuntimeError(
+            "Kaggle API is required to read the dataset but could not be imported."
+        ) from e
+
     dataset = 'arshid/iris-flower-dataset'
     path = 'data'
     os.makedirs(path, exist_ok=True)
 
-    os.environ['KAGGLE_USERNAME'] = config.kaggle_username
-    os.environ['KAGGLE_KEY'] = config.kaggle_key
+    # Set env vars only if provided; otherwise Kaggle will fall back to its default paths
+    if getattr(config, "kaggle_username", None):
+        os.environ['KAGGLE_USERNAME'] = config.kaggle_username
+    if getattr(config, "kaggle_key", None):
+        os.environ['KAGGLE_KEY'] = config.kaggle_key
 
     api = KaggleApi()
     api.authenticate()
