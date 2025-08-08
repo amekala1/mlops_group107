@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/13584bd0b99b47eebb5a6a2ccb825a6d/artifacts
+end_time: 1753848038951
+entry_point_name: ''
+experiment_id: '790090905628631873'
+lifecycle_stage: active
+run_id: 13584bd0b99b47eebb5a6a2ccb825a6d
+run_name: RandomForest
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1753848035847
+status: 3
+tags: []
+user_id: pilla

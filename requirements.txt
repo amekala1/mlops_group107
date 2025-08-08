@@ -1,3 +1,4 @@
+
 numpy
 pandas
 python-dotenv
@@ -8,5 +9,6 @@ mlflow
 kaggle
 exception
 logger
-mlflow
+pytest
+Flask
 #-e .

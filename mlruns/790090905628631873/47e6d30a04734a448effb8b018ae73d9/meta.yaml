@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/47e6d30a04734a448effb8b018ae73d9/artifacts
+end_time: 1754664804348
+entry_point_name: ''
+experiment_id: '790090905628631873'
+lifecycle_stage: active
+run_id: 47e6d30a04734a448effb8b018ae73d9
+run_name: thundering-lamb-820
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754664801061
+status: 3
+tags: []
+user_id: pilla

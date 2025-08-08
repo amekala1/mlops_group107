@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/7aa5e43c34804ab0881e19167393680a/artifacts
+end_time: 1753848035840
+entry_point_name: ''
+experiment_id: '790090905628631873'
+lifecycle_stage: active
+run_id: 7aa5e43c34804ab0881e19167393680a
+run_name: LogisticRegression
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1753848031839
+status: 3
+tags: []
+user_id: pilla

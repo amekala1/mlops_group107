@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/ac413d16ee67419c84a4bf3ac1901fe1/artifacts
+end_time: 1753848325021
+entry_point_name: ''
+experiment_id: '790090905628631873'
+lifecycle_stage: active
+run_id: ac413d16ee67419c84a4bf3ac1901fe1
+run_name: overjoyed-goose-288
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1753848321409
+status: 3
+tags: []
+user_id: pilla

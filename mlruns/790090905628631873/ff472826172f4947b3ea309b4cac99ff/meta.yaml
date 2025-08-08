@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/ff472826172f4947b3ea309b4cac99ff/artifacts
+end_time: 1754664813657
+entry_point_name: ''
+experiment_id: '790090905628631873'
+lifecycle_stage: active
+run_id: ff472826172f4947b3ea309b4cac99ff
+run_name: suave-fox-332
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754664808623
+status: 3
+tags: []
+user_id: pilla
