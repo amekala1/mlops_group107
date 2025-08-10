@@ -19,10 +19,17 @@ def read_kaggle_dataset():
     os.makedirs(path, exist_ok=True)
 
     # Set env vars only if provided; otherwise Kaggle will fall back to its default paths
-    if getattr(config, "kaggle_username", None):
-        os.environ['KAGGLE_USERNAME'] = config.kaggle_username
-    if getattr(config, "kaggle_key", None):
-        os.environ['KAGGLE_KEY'] = config.kaggle_key
+    with open('./root/.config/kaggle/kaggle.json', 'r') as file:
+        data = json.load(file)
+        if 'kaggle_username' in data:
+            os.environ['KAGGLE_USERNAME'] = data['kaggle_username']
+        if 'kaggle_key' in data:
+            os.environ['KAGGLE_KEY'] = data['kaggle_key']
+
+    #if getattr(config, "kaggle_username", None):
+    #    os.environ['KAGGLE_USERNAME'] = config.kaggle_username
+    #if getattr(config, "kaggle_key", None):
+    #    os.environ['KAGGLE_KEY'] = config.kaggle_key
 
     api = KaggleApi()
     api.authenticate()
