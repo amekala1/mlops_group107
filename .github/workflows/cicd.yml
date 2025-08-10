@@ -2,9 +2,9 @@ name: CI/CD for Dockerized Flask App
 
 on:
   push:
-    branches: '**'
+    branches: ["**"]
   pull_request:
-    branches: '**'
+    branches: ["**"]
 
 jobs:
   dockerbuild:
@@ -13,9 +13,9 @@ jobs:
     - uses: actions/checkout@v4
     - name: Build The Docker Image
       run: docker build . --file DockerFile --tag workflow-test:$(date +%s)
+
   build-and-test:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -31,13 +31,11 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run tests
-      run: |
-        pytest
+      run: pytest
 
   build-and-publish:
     needs: build-and-test
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -51,13 +49,16 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Build and push Docker image
+    - name: Build and push Docker image with Kaggle credentials
       uses: docker/build-push-action@v4
       with:
         context: .
         file: ./DockerFile
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/mlops-group107:latest
+        build-args: |
+          KAGGLE_USERNAME=${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY=${{ secrets.KAGGLE_KEY }}
 
     - name: Image digest
       run: echo ${{ steps.build-and-publish.outputs.digest }}
