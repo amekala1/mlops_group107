@@ -1,8 +1,9 @@
 artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/20c9c690c34746bf9c84f3e9687abb18/artifacts
+deleted_time: 1754819633534
 end_time: 1754559568156
 entry_point_name: ''
 experiment_id: '790090905628631873'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: 20c9c690c34746bf9c84f3e9687abb18
 run_name: victorious-midge-661
 source_name: ''

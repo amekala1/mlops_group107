@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/067520b829d242039edf0b21d04ae8cc/artifacts
+deleted_time: 1754819633371
+end_time: 1754719979367
+entry_point_name: ''
+experiment_id: '790090905628631873'
+lifecycle_stage: deleted
+run_id: 067520b829d242039edf0b21d04ae8cc
+run_name: flawless-sow-56
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754719972686
+status: 3
+tags: []
+user_id: pilla

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/a16375f3c5494c63bcfdfe3559d04370/artifacts
+deleted_time: 1754819591470
+end_time: 1754727497743
+entry_point_name: ''
+experiment_id: '790090905628631873'
+lifecycle_stage: deleted
+run_id: a16375f3c5494c63bcfdfe3559d04370
+run_name: zealous-finch-36
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754727491967
+status: 3
+tags: []
+user_id: pilla

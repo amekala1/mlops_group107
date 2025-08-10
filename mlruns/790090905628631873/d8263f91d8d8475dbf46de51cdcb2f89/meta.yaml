@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/d8263f91d8d8475dbf46de51cdcb2f89/artifacts
+deleted_time: 1754819591351
+end_time: 1754798240343
+entry_point_name: ''
+experiment_id: '790090905628631873'
+lifecycle_stage: deleted
+run_id: d8263f91d8d8475dbf46de51cdcb2f89
+run_name: efficient-stag-669
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754798235800
+status: 3
+tags: []
+user_id: pilla

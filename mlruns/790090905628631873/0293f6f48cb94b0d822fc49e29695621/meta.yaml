@@ -1,8 +1,9 @@
 artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/0293f6f48cb94b0d822fc49e29695621/artifacts
+deleted_time: 1754819633487
 end_time: 1754560059723
 entry_point_name: ''
 experiment_id: '790090905628631873'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: 0293f6f48cb94b0d822fc49e29695621
 run_name: sneaky-moth-965
 source_name: ''

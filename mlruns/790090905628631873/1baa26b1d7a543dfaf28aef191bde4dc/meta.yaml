@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/1baa26b1d7a543dfaf28aef191bde4dc/artifacts
+deleted_time: 1754819591262
+end_time: 1754805807424
+entry_point_name: ''
+experiment_id: '790090905628631873'
+lifecycle_stage: deleted
+run_id: 1baa26b1d7a543dfaf28aef191bde4dc
+run_name: righteous-sheep-26
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754805798811
+status: 3
+tags: []
+user_id: pilla

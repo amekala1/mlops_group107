@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/da98a71044ca41aba34ec655be7bbb6b/artifacts
+deleted_time: 1754819591492
+end_time: 1754726140791
+entry_point_name: ''
+experiment_id: '790090905628631873'
+lifecycle_stage: deleted
+run_id: da98a71044ca41aba34ec655be7bbb6b
+run_name: stylish-moose-648
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754726137173
+status: 3
+tags: []
+user_id: pilla

@@ -15,3 +15,7 @@ logs/
 
 # Others
 .DS_Store
+/Data/wal/
+/Data/chunks_head/
+/Data/01K29PMNXYZG9ZWDBCRWRXTW84/
+/Data/01K29PMNV6XJ8VBBBFMKGDW2M2/

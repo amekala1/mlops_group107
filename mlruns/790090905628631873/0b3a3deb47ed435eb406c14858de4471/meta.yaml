@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/0b3a3deb47ed435eb406c14858de4471/artifacts
+deleted_time: 1754819591293
+end_time: 1754803430899
+entry_point_name: ''
+experiment_id: '790090905628631873'
+lifecycle_stage: deleted
+run_id: 0b3a3deb47ed435eb406c14858de4471
+run_name: upset-carp-350
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754803425491
+status: 3
+tags: []
+user_id: pilla

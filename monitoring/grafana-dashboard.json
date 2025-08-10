@@ -1,0 +1,27 @@
+{
+    "title": "Iris Flask App Monitoring",
+  "panels": [
+    {
+      "type": "graph",
+      "title": "HTTP Requests per second",
+      "targets": [
+        {"expr": "rate(http_requests_total[1m])"}
+      ]
+    },
+    {
+      "type": "graph",
+      "title": "Request latency (p95)",
+      "targets": [
+        {"expr": "histogram_quantile(0.95, sum(rate(http_request_latency_seconds_bucket[5m])) by (le))"}
+      ]
+    },
+    {
+      "type": "graph",
+      "title": "Predictions by species",
+      "targets": [
+        {"expr": "sum(rate(predictions_total[5m])) by (outcome)"}
+      ]
+    }
+  ],
+  "time": {"from": "now-6h", "to": "now"}
+}

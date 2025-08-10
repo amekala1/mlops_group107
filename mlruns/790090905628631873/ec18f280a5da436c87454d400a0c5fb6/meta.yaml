@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/ec18f280a5da436c87454d400a0c5fb6/artifacts
+deleted_time: 1754819633451
+end_time: 1754718156318
+entry_point_name: ''
+experiment_id: '790090905628631873'
+lifecycle_stage: deleted
+run_id: ec18f280a5da436c87454d400a0c5fb6
+run_name: masked-cub-270
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754718152963
+status: 3
+tags: []
+user_id: pilla

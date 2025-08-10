@@ -1,8 +1,9 @@
 artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/13969c37c31b451bb99065b3b72cee5b/artifacts
+deleted_time: 1754819633506
 end_time: 1754559871742
 entry_point_name: ''
 experiment_id: '790090905628631873'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: 13969c37c31b451bb99065b3b72cee5b
 run_name: sincere-sponge-849
 source_name: ''

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/882bb5d449b2470bb2e0782693d1c02a/artifacts
+deleted_time: 1754819591364
+end_time: 1754798208597
+entry_point_name: ''
+experiment_id: '790090905628631873'
+lifecycle_stage: deleted
+run_id: 882bb5d449b2470bb2e0782693d1c02a
+run_name: crawling-kit-403
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754798203886
+status: 3
+tags: []
+user_id: pilla

@@ -11,4 +11,6 @@ exception
 logger
 pytest
 Flask
+pydantic
+prometheus_client
 #-e .

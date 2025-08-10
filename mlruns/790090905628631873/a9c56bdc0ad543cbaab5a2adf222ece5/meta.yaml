@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/a9c56bdc0ad543cbaab5a2adf222ece5/artifacts
+deleted_time: 1754819591377
+end_time: 1754797882377
+entry_point_name: ''
+experiment_id: '790090905628631873'
+lifecycle_stage: deleted
+run_id: a9c56bdc0ad543cbaab5a2adf222ece5
+run_name: mysterious-seal-296
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754797879015
+status: 3
+tags: []
+user_id: pilla

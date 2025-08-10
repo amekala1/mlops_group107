@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/2d7edf93029a44b9bbc79f4326f7eebd/artifacts
+deleted_time: 1754819591334
+end_time: 1754799275138
+entry_point_name: ''
+experiment_id: '790090905628631873'
+lifecycle_stage: deleted
+run_id: 2d7edf93029a44b9bbc79f4326f7eebd
+run_name: bald-cow-435
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754799271641
+status: 3
+tags: []
+user_id: pilla

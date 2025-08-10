@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/b1aa6acfc5d04b3098ac8bb0b0b75eb2/artifacts
+deleted_time: 1754819591523
+end_time: 1754725729669
+entry_point_name: ''
+experiment_id: '790090905628631873'
+lifecycle_stage: deleted
+run_id: b1aa6acfc5d04b3098ac8bb0b0b75eb2
+run_name: redolent-bear-852
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754725720933
+status: 3
+tags: []
+user_id: pilla

@@ -1,39 +1,502 @@
-<!DOCTYPE html>
-<html >
-
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>ML OPS Group 107</title>
-  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-
-  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Iris MLOps Console - Group 107 - S2-24_AIMLCZG523</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background-color: white; color: #212529; }
+    .navbar-brand { font-weight: 700; font-size: 1.9rem; }
+    .card { background: #ffffff; color: #212529; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .card-header { background: #f8f9fa; font-weight: 600; }
+    .tab-content { margin-top: 1rem; }
+    .small-muted { font-size: .9rem; color: #6c757d; }
+    .footer { color: #6c757d; font-size: .9rem; border-top: 1px solid #e9ecef; background: #fff; }
+    .code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+    pre { background: #f8f9fa; color: #212529; border: 1px solid #e9ecef; }
+  </style>
 </head>
-
 <body>
- <div class="login">
-	<h1>IRIS Classification</h1>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Iris MLOps Console - Group 107 - S2-24_AIMLCZG523 </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto" role="tablist">
+        <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#tab-predict" role="tab" aria-controls="tab-predict" aria-selected="true">Predict</a></li>
+        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-retrain" role="tab" aria-controls="tab-retrain" aria-selected="false">Retrain</a></li>
+        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-monitoring" role="tab" aria-controls="tab-monitoring" aria-selected="false">Monitoring</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-     <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}"method="post">
-      <input type="text" name="sepal_length_a" placeholder="sepal_length" required="required" /><br>
-    	<input type="text" name="sepal_width" placeholder="sepal_width" required="required" /><br>
-      <input type="text" name="petal_length" placeholder="petal_length" required="required" /><br>
-      <input type="text" name="petal_width" placeholder="petal_width" required="required" /><br>
-      <!-- <input type="text" name="species" placeholder="species" required="required" /><br> -->
-       
+<div class="container py-4">
+  <div class="tab-content">
+    <!-- Predict Tab -->
+    <div class="tab-pane fade show active" id="tab-predict">
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-header">IRIS Classification</div>
+            <div class="card-body">
+              <div id="predictInfo"></div>
+              <p class="small-muted">Enter Iris flower measurements and submit to predict the species.</p>
+              <form action="{{ url_for('predict') }}" method="post" class="row g-3">
+                <div class="col-6">
+                  <label class="form-label">Sepal length (cm)</label>
+                  <input type="number" step="any" name="sepal_length" class="form-control" placeholder="e.g., 5.1" required>
+                </div>
+                <div class="col-6">
+                  <label class="form-label">Sepal width (cm)</label>
+                  <input type="number" step="any" name="sepal_width" class="form-control" placeholder="e.g., 3.5" required>
+                </div>
+                <div class="col-6">
+                  <label class="form-label">Petal length (cm)</label>
+                  <input type="number" step="any" name="petal_length" class="form-control" placeholder="e.g., 1.4" required>
+                </div>
+                <div class="col-6">
+                  <label class="form-label">Petal width (cm)</label>
+                  <input type="number" step="any" name="petal_width" class="form-control" placeholder="e.g., 0.2" required>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary">Predict</button>
+                </div>
+              </form>
+              {% if prediction_text %}
+              <div class="alert alert-info mt-3" role="alert">{{ prediction_text }}</div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="card mt-4">
+            <div class="card-header">Model Metrics</div>
+            <div class="card-body">
+              <div id="metricsArea">
+                <div class="small-muted">Loading latest metrics...</div>
+              </div>
+              <div class="mt-3">
+                <div class="small-muted mb-1">Confusion Matrix</div>
+                <div id="cmHeatmap"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="d-flex flex-column gap-4">
+            <div class="card">
+              <div class="card-header">API Quick Reference</div>
+              <div class="card-body">
+                <div class="small-muted">Endpoints</div>
+                <ul>
+                  <li><span class="code">POST /predict_api</span> – JSON prediction</li>
+                  <li><span class="code">POST /predict</span> – Form prediction (this page)</li>
+                  <li><span class="code">POST /ingest</span> – Ingest new data</li>
+                  <li><span class="code">POST /retrain</span> – Trigger background retraining</li>
+                  <li><span class="code">GET /retrain/status</span> – Check background training status</li>
+                  <li><span class="code">GET /model/metrics</span> – Latest training metrics (JSON)</li>
+                  <li><span class="code">GET /metrics</span> – Prometheus metrics</li>
+                </ul>
+                <div class="small-muted">Sample API calls (Windows PowerShell)</div>
+<pre class="bg-light p-2 rounded code"># Predict via JSON
+$body = @{ data = @{ sepal_length=5.1; sepal_width=3.5; petal_length=1.4; petal_width=0.2 } } | ConvertTo-Json
+Invoke-RestMethod -Uri "http://127.0.0.1:8000/predict_api" -Method Post -Body $body -ContentType "application/json"
 
-        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
-    </form>
+# Ingest new data and retrain
+$ing = @{ data = @(@{ sepal_length=6.1; sepal_width=2.8; petal_length=4.7; petal_width=1.2 }) } | ConvertTo-Json
+Invoke-RestMethod -Uri "http://127.0.0.1:8000/ingest" -Method Post -Body $ing -ContentType "application/json"
 
-   <br>
-   <br>
-  
-   
- </div>
- {{prediction_text}}
+# Trigger retrain and poll status
+Invoke-RestMethod -Uri "http://127.0.0.1:8000/retrain" -Method Post
+Invoke-RestMethod -Uri "http://127.0.0.1:8000/retrain/status" -Method Get
 
+# Model metrics
+Invoke-RestMethod -Uri "http://127.0.0.1:8000/model/metrics" -Method Get
+
+# Raw Prometheus metrics
+Invoke-WebRequest -Uri "http://127.0.0.1:8000/metrics" | Select-Object -ExpandProperty Content</pre>
+                <div class="small-muted mt-2">Sample API calls (curl)</div>
+<pre class="bg-light p-2 rounded code"># Predict via JSON (Windows caret ^ for line breaks)
+curl -X POST http://127.0.0.1:8000/predict_api ^
+  -H "Content-Type: application/json" ^
+  -d "{\"data\": {\"sepal_length\": 5.1, \"sepal_width\": 3.5, \"petal_length\": 1.4, \"petal_width\": 0.2}}"
+
+# Ingest new data
+curl -X POST http://127.0.0.1:8000/ingest ^
+  -H "Content-Type: application/json" ^
+  -d "{\"data\":[{\"sepal_length\":6.1,\"sepal_width\":2.8,\"petal_length\":4.7,\"petal_width\":1.2}]}"
+
+# Trigger retrain and check status
+curl -X POST http://127.0.0.1:8000/retrain
+curl http://127.0.0.1:8000/retrain/status
+
+# Get latest model metrics (JSON)
+curl http://127.0.0.1:8000/model/metrics
+
+# Prometheus scrape endpoint
+curl http://127.0.0.1:8000/metrics</pre>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Retrain Tab -->
+    <div class="tab-pane fade" id="tab-retrain">
+      <div class="row g-4">
+        <div class="col-lg-7">
+          <div class="card">
+            <div class="card-header">Ingest New Data (JSON)</div>
+            <div class="card-body">
+              <p class="small-muted">Paste JSON for the <span class="code">/ingest</span> endpoint or upload a .json file. The app validates using Pydantic.</p>
+              <div class="mb-3">
+                <label class="form-label">JSON payload</label>
+                <textarea id="ingestText" class="form-control" rows="8" placeholder='{"data": {"sepal_length": 6.1, "sepal_width": 2.8, "petal_length": 4.7, "petal_width": 1.2}}'></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="ingestFile" class="form-label">Or upload JSON file</label>
+                <input class="form-control" type="file" id="ingestFile" accept="application/json,.json">
+              </div>
+              <div class="d-flex gap-2">
+                <button id="btnIngest" class="btn btn-success">Send to /ingest</button>
+                <button id="btnClear" class="btn btn-outline-secondary">Clear</button>
+              </div>
+              <div id="ingestResult" class="mt-3"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="card h-100">
+            <div class="card-header">Trigger Retraining</div>
+            <div class="card-body d-flex flex-column">
+              <p class="small-muted">Kick off background training. The model cache will be refreshed automatically when done.</p>
+              <div>
+                <button id="btnRetrain" class="btn btn-warning">POST /retrain</button>
+              </div>
+              <div class="mt-3 align-items-center gap-2 d-none" id="retrainProgress">
+                <div class="spinner-border text-warning" role="status" aria-hidden="true"></div>
+                <span id="retrainProgressText">Training started...</span>
+              </div>
+              <div id="retrainResult" class="mt-3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Monitoring Tab -->
+    <div class="tab-pane fade" id="tab-monitoring">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="card h-100">
+            <div class="card-header">MLflow UI</div>
+            <div class="card-body">
+              <p class="small-muted">View runs, metrics, and artifacts.</p>
+              <a class="btn btn-outline-primary" href="http://127.0.0.1:5000" target="_blank" rel="noopener">Open MLflow UI</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card h-100">
+            <div class="card-header">Prometheus Metrics</div>
+            <div class="card-body">
+              <p class="small-muted">Scrapeable metrics in text format.</p>
+              <a class="btn btn-outline-success" href="/metrics" target="_blank" rel="noopener">View /metrics</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card h-100">
+            <div class="card-header">Grafana</div>
+            <div class="card-body">
+              <p class="small-muted"> add Prometheus data source (URL: <span class="code">http://127.0.0.1:9090</span>) and import <span class="code">monitoring/grafana-dashboard.json</span>.</p>
+              <a class="btn btn-outline-dark" href="https://pillalamarrymahesh.grafana.net/d/6df2a745-3efb-4938-9b0d-11b00aa79c41/iris-flask-app-monitoring" target="_blank" rel="noopener">Open Grafana cloud</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="row g-4 mt-1">
+        <div class="col-12">
+          <div class="alert alert-secondary" role="alert">
+            Tip: If MLflow UI runs elsewhere, set MLFLOW_TRACKING_URI before starting the app. Default links assume http://127.0.0.1:5000.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer py-4">
+  <div class="container text-center">
+    <span>© 2025 -- Group 107 -- MLOOPS Assignment 1 </span>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Persist active tab on reload and provide a Bootstrap-free fallback
+  const tabLinks = Array.from(document.querySelectorAll('[data-bs-toggle="tab"]'));
+
+  function activateTabByHref(href) {
+    // Deactivate all
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active', 'show'));
+    tabLinks.forEach(l => { l.classList.remove('active'); l.setAttribute('aria-selected', 'false'); });
+    // Activate target
+    const pane = document.querySelector(href);
+    const link = document.querySelector(`[data-bs-toggle="tab"][href="${href}"]`);
+    if (pane) pane.classList.add('active', 'show');
+    if (link) { link.classList.add('active'); link.setAttribute('aria-selected', 'true'); }
+    localStorage.setItem('activeTab', href);
+  }
+
+  // Try Bootstrap first; if not available, use fallback
+  tabLinks.forEach(link => {
+    link.addEventListener('click', function (e) {
+      try {
+        if (window.bootstrap && bootstrap.Tab) {
+          // Let Bootstrap handle; still store active tab when event fires
+          link.addEventListener('shown.bs.tab', function (event) {
+            localStorage.setItem('activeTab', event.target.getAttribute('href'))
+          }, { once: true });
+        } else {
+          e.preventDefault();
+          const href = link.getAttribute('href');
+          activateTabByHref(href);
+        }
+      } catch (_) {
+        e.preventDefault();
+        const href = link.getAttribute('href');
+        activateTabByHref(href);
+      }
+    });
+  });
+
+  // If a prediction alert exists in the DOM, force Predict tab this load to avoid jumping to another tab
+  const predictionAlert = document.querySelector('#tab-predict .alert.alert-info');
+  const HAS_PREDICTION = !!predictionAlert;
+  const storedTab = localStorage.getItem('activeTab') || '#tab-predict';
+  const activeToShow = HAS_PREDICTION ? '#tab-predict' : storedTab;
+  if (window.bootstrap && bootstrap.Tab) {
+    const triggerEl = document.querySelector(`[href="${activeToShow}"]`);
+    if (triggerEl) new bootstrap.Tab(triggerEl).show();
+  } else {
+    activateTabByHref(activeToShow);
+  }
+
+  // Ingest: load file into textarea
+  const ingestFile = document.getElementById('ingestFile');
+  const ingestText = document.getElementById('ingestText');
+  if (ingestFile) {
+    ingestFile.addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const text = await file.text();
+      ingestText.value = text;
+    });
+  }
+
+  // Ingest: POST to /ingest
+  const btnIngest = document.getElementById('btnIngest');
+  const ingestResult = document.getElementById('ingestResult');
+  if (btnIngest) {
+    btnIngest.addEventListener('click', async () => {
+      ingestResult.innerHTML = '';
+      let payload;
+      try {
+        payload = JSON.parse(ingestText.value);
+      } catch (e) {
+        ingestResult.innerHTML = '<div class="alert alert-danger">Invalid JSON</div>';
+        return;
+      }
+      try {
+        const res = await fetch('/ingest', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        const ok = !data.error;
+        ingestResult.innerHTML = `<div class="alert ${ok ? 'alert-success' : 'alert-danger'}"><pre class="m-0 code">${JSON.stringify(data, null, 2)}</pre></div>`;
+      } catch (err) {
+        ingestResult.innerHTML = '<div class="alert alert-danger">Request failed</div>';
+      }
+    });
+  }
+
+  // Clear
+  const btnClear = document.getElementById('btnClear');
+  if (btnClear) {
+    btnClear.addEventListener('click', () => { ingestText.value = ''; ingestResult.innerHTML=''; });
+  }
+
+  // Retrain: POST to /retrain with spinner + polling
+  const btnRetrain = document.getElementById('btnRetrain');
+  const retrainResult = document.getElementById('retrainResult');
+  const retrainProgress = document.getElementById('retrainProgress');
+  const retrainProgressText = document.getElementById('retrainProgressText');
+  // Ensure the retrain spinner is hidden on initial load (no flash)
+  if (retrainProgress) { retrainProgress.classList.add('d-none'); }
+
+  async function pollStatusOnce() {
+    const res = await fetch('/retrain/status');
+    return await res.json();
+  }
+
+  function secondsSince(epochSeconds) {
+    if (!epochSeconds) return '?';
+    return Math.floor(Date.now()/1000 - epochSeconds);
+  }
+
+  async function startPollingUntilDone() {
+    let done = false;
+    while (!done) {
+      try {
+        const st = await pollStatusOnce();
+        if (st && st.running) {
+          retrainProgressText.textContent = `Training in progress... (${secondsSince(st.started_at)}s)`;
+          await new Promise(r => setTimeout(r, 2000));
+        } else {
+          done = true;
+          const ok = st && !st.error && !st.last_error;
+          retrainProgress.style.display = 'none';
+          const msg = ok ? `Training completed. Accuracy: ${st.last_accuracy ?? 'N/A'}` : `Training failed: ${st.last_error || 'Unknown error'}`;
+          retrainResult.innerHTML = `<div class="alert ${ok ? 'alert-success' : 'alert-danger'}">${msg}</div>`;
+          try {
+            if (ok) {
+              // Store for Predict tab and navigate there
+              localStorage.setItem('lastAccuracy', String(st.last_accuracy ?? ''));
+              localStorage.setItem('lastCompletedAt', String(st.completed_at ?? ''));
+              // Switch to Predict tab and show info
+              const target = '#tab-predict';
+              if (window.bootstrap && bootstrap.Tab) {
+                const triggerEl = document.querySelector(`[href="${target}"]`);
+                if (triggerEl) new bootstrap.Tab(triggerEl).show();
+              } else {
+                activateTabByHref(target);
+              }
+              setTimeout(() => {
+                showPredictInfoFromLocalStorage();
+                fetchAndRenderMetrics();
+              }, 100);
+            }
+          } catch (_) {}
+        }
+      } catch (e) {
+        retrainProgress.style.display = 'none';
+        retrainResult.innerHTML = '<div class="alert alert-danger">Polling failed</div>';
+        done = true;
+      }
+    }
+  }
+
+  function showPredictInfoFromLocalStorage() {
+    const infoDiv = document.getElementById('predictInfo');
+    if (!infoDiv) return;
+    const acc = localStorage.getItem('lastAccuracy');
+    const ts = localStorage.getItem('lastCompletedAt');
+    if (acc) {
+      const when = ts ? new Date(parseFloat(ts) * 1000).toLocaleString() : 'now';
+      infoDiv.innerHTML = `<div class="alert alert-success">Latest training accuracy: <strong>${acc}</strong> (completed: ${when})</div>`;
+    }
+  }
+
+  // Show predict info on load if exists
+  showPredictInfoFromLocalStorage();
+
+  // Fetch and render model metrics and confusion matrix
+  async function fetchAndRenderMetrics() {
+    const metricsArea = document.getElementById('metricsArea');
+    const cmHeatmap = document.getElementById('cmHeatmap');
+    if (!metricsArea || !cmHeatmap) return;
+    try {
+      const res = await fetch('/model/metrics');
+      const data = await res.json();
+      if (data && data.accuracy !== undefined) {
+        const rows = [
+          ['Model', data.model_name ?? 'n/a'],
+          ['Accuracy', (data.accuracy).toFixed(4)],
+          ['Precision (macro)', (data.precision_macro ?? 0).toFixed(4)],
+          ['Recall (macro)', (data.recall_macro ?? 0).toFixed(4)],
+          ['F1 (macro)', (data.f1_macro ?? 0).toFixed(4)],
+          ['Updated at', data.updated_at ? new Date(data.updated_at * 1000).toLocaleString() : 'n/a']
+        ];
+        metricsArea.innerHTML = `<table class="table table-sm">${rows.map(r => `<tr><th class='w-50'>${r[0]}</th><td>${r[1]}</td></tr>`).join('')}</table>`;
+
+        // Render heatmap
+        renderHeatmap(data.labels || [], data.confusion_matrix || []);
+      } else {
+        metricsArea.innerHTML = '<div class="alert alert-secondary">Metrics not available yet.</div>';
+        cmHeatmap.innerHTML = '';
+      }
+    } catch (e) {
+      metricsArea.innerHTML = '<div class="alert alert-danger">Failed to load metrics</div>';
+      cmHeatmap.innerHTML = '';
+    }
+  }
+
+  function renderHeatmap(labels, matrix) {
+    const cmHeatmap = document.getElementById('cmHeatmap');
+    if (!cmHeatmap) return;
+    if (!Array.isArray(labels) || !Array.isArray(matrix) || matrix.length === 0) {
+      cmHeatmap.innerHTML = '<div class="small-muted">No confusion matrix available</div>';
+      return;
+    }
+    const flat = matrix.flat();
+    const max = Math.max(1, ...flat);
+    // Build a table with shaded cells
+    let html = '<table class="table table-bordered table-sm align-middle text-center">';
+    // Header row
+    html += '<thead><tr><th></th>' + labels.map(l => `<th>${l}</th>`).join('') + '</tr></thead>';
+    html += '<tbody>';
+    for (let i = 0; i < matrix.length; i++) {
+      html += `<tr><th scope="row">${labels[i] ?? ''}</th>`;
+      for (let j = 0; j < matrix[i].length; j++) {
+        const v = matrix[i][j] || 0;
+        const intensity = v / max; // 0..1
+        const color = `rgba(25, 135, 84, ${0.15 + 0.7 * intensity})`; // bootstrap success-ish
+        html += `<td style="background:${color}"><strong>${v}</strong></td>`;
+      }
+      html += '</tr>';
+    }
+    html += '</tbody></table>';
+    cmHeatmap.innerHTML = html;
+  }
+
+  // Initial load metrics
+  fetchAndRenderMetrics();
+
+  if (btnRetrain) {
+    btnRetrain.addEventListener('click', async () => {
+      retrainResult.innerHTML = '';
+      retrainProgress.classList.remove('d-none');
+      retrainProgress.classList.add('d-flex');
+      btnRetrain.disabled = true;
+      try {
+        const res = await fetch('/retrain', { method: 'POST' });
+        const data = await res.json();
+        if (data && !data.error) {
+          // start polling status
+          startPollingUntilDone().finally(() => { btnRetrain.disabled = false; });
+        } else {
+          retrainProgress.classList.remove('d-flex');
+          retrainProgress.classList.add('d-none');
+          retrainResult.innerHTML = `<div class="alert alert-danger">${data.error || 'Retrain request failed'}</div>`;
+          btnRetrain.disabled = false;
+        }
+      } catch (e) {
+        retrainProgress.classList.remove('d-flex');
+        retrainProgress.classList.add('d-none');
+        retrainResult.innerHTML = '<div class="alert alert-danger">Request failed</div>';
+        btnRetrain.disabled = false;
+      }
+    });
+  }
+</script>
 </body>
 </html>

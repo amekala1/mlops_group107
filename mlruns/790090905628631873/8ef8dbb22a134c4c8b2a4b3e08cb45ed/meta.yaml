@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/8ef8dbb22a134c4c8b2a4b3e08cb45ed/artifacts
+deleted_time: 1754819591501
+end_time: 1754725813150
+entry_point_name: ''
+experiment_id: '790090905628631873'
+lifecycle_stage: deleted
+run_id: 8ef8dbb22a134c4c8b2a4b3e08cb45ed
+run_name: youthful-fish-971
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754725809274
+status: 3
+tags: []
+user_id: pilla

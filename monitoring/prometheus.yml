@@ -1,0 +1,13 @@
+global:
+  scrape_interval: 5s
+remote_write:
+  - url: https://prometheus-prod-43-prod-ap-south-1.grafana.net/api/prom/push
+    basic_auth:
+      username: 2610093
+      password: glc_eyJvIjoiMTUwNTE0OCIsIm4iOiJzdGFjay0xMzQyOTI5LWFsbG95LW15LW1sb29wcyIsImsiOiI3TDIyRFY1MEoxNnJEc3daNXc4OEtleVoiLCJtIjp7InIiOiJwcm9kLWFwLXNvdXRoLTEifX0=
+scrape_configs:
+  - job_name: iris-flask-app
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["localhost:8000"]
+
