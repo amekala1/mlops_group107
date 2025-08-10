@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/bb0bea2d336941ddbe641beb4e385053/artifacts
+deleted_time: 1754819591281
+end_time: 1754804267263
+entry_point_name: ''
+experiment_id: '790090905628631873'
+lifecycle_stage: deleted
+run_id: bb0bea2d336941ddbe641beb4e385053
+run_name: chill-wolf-480
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754804262877
+status: 3
+tags: []
+user_id: pilla

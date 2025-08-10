@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/e20844287251480f83acea7c31b81fed/artifacts
+deleted_time: 1754819591526
+end_time: 1754725720895
+entry_point_name: ''
+experiment_id: '790090905628631873'
+lifecycle_stage: deleted
+run_id: e20844287251480f83acea7c31b81fed
+run_name: shivering-chimp-132
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754725706777
+status: 3
+tags: []
+user_id: pilla

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/9caf6c8e3ce94eb584e34f498e43d777/artifacts
+deleted_time: 1754819591411
+end_time: 1754796828867
+entry_point_name: ''
+experiment_id: '790090905628631873'
+lifecycle_stage: deleted
+run_id: 9caf6c8e3ce94eb584e34f498e43d777
+run_name: exultant-bug-462
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754796824463
+status: 3
+tags: []
+user_id: pilla

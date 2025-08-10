@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/models/m-4c209d8ed79243e3a76dc7b8add5809c/artifacts
+creation_timestamp: 1754819894829
+experiment_id: '790090905628631873'
+last_updated_timestamp: 1754819897962
+model_id: m-4c209d8ed79243e3a76dc7b8add5809c
+model_type: ''
+name: model
+source_run_id: 25796b23e9c7438d8acc66c572060bd3
+status: 2
+status_message: null

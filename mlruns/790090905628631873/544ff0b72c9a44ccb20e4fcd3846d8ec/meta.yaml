@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/544ff0b72c9a44ccb20e4fcd3846d8ec/artifacts
+deleted_time: 1754819591288
+end_time: 1754803448309
+entry_point_name: ''
+experiment_id: '790090905628631873'
+lifecycle_stage: deleted
+run_id: 544ff0b72c9a44ccb20e4fcd3846d8ec
+run_name: wistful-worm-157
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754803444831
+status: 3
+tags: []
+user_id: pilla

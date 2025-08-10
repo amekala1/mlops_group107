@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/a66a8dffc0294e56b0c63e9ec4030270/artifacts
+deleted_time: 1754819591644
+end_time: 1754720832510
+entry_point_name: ''
+experiment_id: '790090905628631873'
+lifecycle_stage: deleted
+run_id: a66a8dffc0294e56b0c63e9ec4030270
+run_name: awesome-fowl-652
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754720827725
+status: 3
+tags: []
+user_id: pilla

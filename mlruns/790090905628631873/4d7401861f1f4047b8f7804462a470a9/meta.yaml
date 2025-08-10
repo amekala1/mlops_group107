@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/4d7401861f1f4047b8f7804462a470a9/artifacts
+end_time: 1754819908273
+entry_point_name: ''
+experiment_id: '790090905628631873'
+lifecycle_stage: active
+run_id: 4d7401861f1f4047b8f7804462a470a9
+run_name: skittish-bass-0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754819904144
+status: 3
+tags: []
+user_id: pilla

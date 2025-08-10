@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/6a525025d8da460ba1ac7a6ca2f9d24d/artifacts
+end_time: 1754820930169
+entry_point_name: ''
+experiment_id: '790090905628631873'
+lifecycle_stage: active
+run_id: 6a525025d8da460ba1ac7a6ca2f9d24d
+run_name: smiling-pug-460
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754820924632
+status: 3
+tags: []
+user_id: pilla

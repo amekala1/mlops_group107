@@ -1,8 +1,9 @@
 artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/0c3055f57c0a40cc92a35ac8d80f1072/artifacts
+deleted_time: 1754819633508
 end_time: 1754559884682
 entry_point_name: ''
 experiment_id: '790090905628631873'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: 0c3055f57c0a40cc92a35ac8d80f1072
 run_name: thundering-robin-408
 source_name: ''

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/2ffbcdfd2ef441debca068b80b0fc2b0/artifacts
+deleted_time: 1754819591331
+end_time: 1754799626604
+entry_point_name: ''
+experiment_id: '790090905628631873'
+lifecycle_stage: deleted
+run_id: 2ffbcdfd2ef441debca068b80b0fc2b0
+run_name: brawny-mule-60
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754799621392
+status: 3
+tags: []
+user_id: pilla

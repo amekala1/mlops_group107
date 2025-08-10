@@ -1,8 +1,9 @@
 artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/4717a244e7f34edbbd1965aab2f08021/artifacts
+deleted_time: 1754819633484
 end_time: 1754664801033
 entry_point_name: ''
 experiment_id: '790090905628631873'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: 4717a244e7f34edbbd1965aab2f08021
 run_name: rare-stork-668
 source_name: ''

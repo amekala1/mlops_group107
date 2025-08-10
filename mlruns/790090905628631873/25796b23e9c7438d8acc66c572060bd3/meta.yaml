@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/25796b23e9c7438d8acc66c572060bd3/artifacts
+end_time: 1754819897975
+entry_point_name: ''
+experiment_id: '790090905628631873'
+lifecycle_stage: active
+run_id: 25796b23e9c7438d8acc66c572060bd3
+run_name: masked-trout-800
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754819894487
+status: 3
+tags: []
+user_id: pilla

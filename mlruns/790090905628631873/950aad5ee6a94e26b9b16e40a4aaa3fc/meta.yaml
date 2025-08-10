@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/950aad5ee6a94e26b9b16e40a4aaa3fc/artifacts
+deleted_time: 1754819633381
+end_time: 1754719957773
+entry_point_name: ''
+experiment_id: '790090905628631873'
+lifecycle_stage: deleted
+run_id: 950aad5ee6a94e26b9b16e40a4aaa3fc
+run_name: omniscient-crab-379
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754719952984
+status: 3
+tags: []
+user_id: pilla

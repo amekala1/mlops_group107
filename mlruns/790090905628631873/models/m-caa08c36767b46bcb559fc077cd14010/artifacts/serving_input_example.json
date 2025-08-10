@@ -1,0 +1,18 @@
+{
+  "dataframe_split": {
+    "columns": [
+      "sepal_length",
+      "sepal_width",
+      "petal_length",
+      "petal_width"
+    ],
+    "data": [
+      [
+        6.1,
+        2.8,
+        4.7,
+        1.2
+      ]
+    ]
+  }
+}

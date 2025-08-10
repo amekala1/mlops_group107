@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/37dc45e91a874fda95298dc2d7dec74e/artifacts
+deleted_time: 1754819591682
+end_time: 1754720561049
+entry_point_name: ''
+experiment_id: '790090905628631873'
+lifecycle_stage: deleted
+run_id: 37dc45e91a874fda95298dc2d7dec74e
+run_name: hilarious-fawn-607
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754720555858
+status: 3
+tags: []
+user_id: pilla

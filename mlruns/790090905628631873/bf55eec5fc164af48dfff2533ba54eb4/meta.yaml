@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/pilla/OneDrive/Documents/mlops_group107/mlruns/790090905628631873/bf55eec5fc164af48dfff2533ba54eb4/artifacts
+deleted_time: 1754819591282
+end_time: 1754804271776
+entry_point_name: ''
+experiment_id: '790090905628631873'
+lifecycle_stage: deleted
+run_id: bf55eec5fc164af48dfff2533ba54eb4
+run_name: bustling-bat-541
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754804267318
+status: 3
+tags: []
+user_id: pilla
